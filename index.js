@@ -12,10 +12,10 @@
  * @private
  */
 
-var rndm = require('rndm')
 var uid = require('uid-safe')
 var compare = require('tsscmp')
 var crypto = require('crypto')
+const { random } = require('./random')
 
 /**
  * Module variables.
@@ -81,7 +81,7 @@ Tokens.prototype.create = function create (secret) {
     throw new TypeError('argument secret is required')
   }
 
-  return this._tokenize(secret, rndm(this.saltLength))
+  return this._tokenize(secret, random(this.saltLength))
 }
 
 /**
